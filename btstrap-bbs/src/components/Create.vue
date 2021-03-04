@@ -14,10 +14,7 @@
 <script>
 import data from '@/data'
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 5d41eae96d2f274a8aa18d1b793a4ba7e00be418
 export default {
   name: 'Create',
   data() {
