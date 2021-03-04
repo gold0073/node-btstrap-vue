@@ -7,7 +7,10 @@ import BootstrapVue from 'bootstrap-vue'
 import App from './App'
 import router from './router'
 
-Vue.prototype.$http = axios;
+Vue.prototype.$axios = axios;
+
+axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
