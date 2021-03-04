@@ -1,18 +1,19 @@
 <template>
   <div>
-    <b-table striped hover :items="items" :fields="fields" @row-clicked="rowClick"></b-table>
+    
+    <b-table striped hover :items="items" :fields="fields"  @row-clicked="rowClick"></b-table>
     <b-button @click="writeContent">글쓰기</b-button>
   </div>
 </template>
-
 <script>
-import data from '@/data'
 export default {
   name: 'Board',
   data() {
-    let items = data.Content.sort((a,b) => {return b.content_id - a.content_id})
-items = items.map(contentItem => {return {...contentItem, user_name: data.User.filter(userItem => userItem.user_id === contentItem.user_id)[0].name}})
+    //let items = data.Content.sort((a,b) => {return b.content_id - a.content_id})
+    //items = items.map(contentItem => {return {...contentItem, user_name: data.User.filter(userItem => userItem.user_id === contentItem.user_id)[0].name}})
+
     return {
+
       fields: [
         {
           key: 'content_id',
@@ -30,11 +31,30 @@ items = items.map(contentItem => {return {...contentItem, user_name: data.User.f
           key: 'user_name',
           label: '글쓴이'
         },
-      ],
-      items: items
+        /*
+        {
+          key: 'user_id',
+          label: 'UserID'
+        },
+        */
+       ],
+       items: []
     }
   },
+  async created(){
+    this.getBoardList();
+  },
   methods: {
+    async getBoardList(){
+      
+      this.$http.get('http://127.0.0.1:8000/contents').then( ret =>{
+        
+        console.log("results :" , ret);
+        this.items = ret.data.results;
+        return ret;
+      });
+
+    },
     rowClick(item, index, e) {
       this.$router.push({
         path: `/board/free/detail/${item.content_id}`

@@ -13,6 +13,7 @@
 </template>
 <script>
 import data from '@/data'
+
 export default {
   name: 'Create',
   data() {
@@ -26,7 +27,7 @@ export default {
       updateMode: this.$route.params.contentId > 0 ? true : false
     }
   },
-  created() {
+  async created() {
     if (this.$route.params.contentId > 0) {
       const contentId = Number(this.$route.params.contentId)
       this.updateObject = data.Content.filter(item => item.content_id === contentId)[0]
@@ -35,9 +36,17 @@ export default {
     }
   },
   methods: {
-    uploadContent() {
+    async uploadContent() {
       let items = data.Content.sort((a,b) => {return b.content_id - a.content_id})
       const content_id = items[0].content_id + 1
+
+      await  this.$http.post("http://127.0.0.1:8000/contents", {
+        user_id: this.userId,
+        title: this.subject,
+        context: this.context
+      });
+
+      /*
       data.Content.push({
         content_id: content_id,
         user_id: this.userId,
@@ -46,6 +55,8 @@ export default {
         created_at: this.createdAt,
         updated_at: null
       })
+      */
+
       this.$router.push({
         path: '/board/free/'
       })
