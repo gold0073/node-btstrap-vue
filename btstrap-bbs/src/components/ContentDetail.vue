@@ -15,7 +15,7 @@
             글쓴이: {{user}}
           </div>
           <div class="content-detail-content-info-right-created">
-            등록일: {{created}}
+            등록일: {{created.substring(0,10)}}
           </div>
         </div>
       </div>

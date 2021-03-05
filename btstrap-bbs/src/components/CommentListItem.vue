@@ -3,7 +3,7 @@
     <div class="comment-list-item">
       <div class="comment-list-item-name">
         <div>{{name}}</div>
-        <div>{{commentObj.created_at}}</div>
+        <div>{{commentObj.created_at.substring(0.10)}}</div>
       </div>
       <div class="comment-list-item-context">{{commentObj.context}}</div>
       <div class="comment-list-item-button">
@@ -28,7 +28,7 @@
       >
         <div class="comment-list-item-name">
           <div>{{item.user_name}}</div>
-          <div>{{item.created_at}}</div>
+          <div>{{item.created_at.substring(0,10)}}</div>
         </div>
         <div class="comment-list-item-context">{{item.context}}</div>
         <div class="comment-list-item-button">
@@ -51,7 +51,17 @@ export default {
     CommentCreate
   },
   async created(){
-    this.getSubComment();
+    await this.$axios(
+      {
+        url : this.$microSeviceUrl + '/contents?comment_id='+ this.commentObj.comment_id +'&act_type=sub_comment_inquery',
+        method:'get'
+      }).then( ret =>{
+        console.log("results :" , ret);
+        if(ret.data.errorcode ==0)
+        {
+          this.subCommentList =  ret.data.results;
+        }
+    });
   },
   data() {
     return {
@@ -63,23 +73,22 @@ export default {
     };
   },
   methods: {
-    async getSubComment(){
-      await this.$axios(
-          {
-            url : this.$microSeviceUrl + '/contents?comment_id='+ this.commentObj.comment_id +'&act_type=sub_comment_inquery',
-            method:'get'
-          }).then( ret =>{
-          console.log("results :" , ret);
-          this.subCommentList =  ret.data.results;
-          
-        });
-
-    },
+   
     subCommentToggle() {
       this.subCommentCreateToggle = !this.subCommentCreateToggle;
     },
     async reloadSubComments() {
-       this.getSubComment();
+      await this.$axios(
+      {
+        url : this.$microSeviceUrl + '/contents?comment_id='+ this.commentObj.comment_id +'&act_type=sub_comment_inquery',
+        method:'get'
+      }).then( ret =>{
+      console.log("results :" , ret);
+      if(ret.data.errorcode ==0)
+      {
+        this.subCommentList =  ret.data.results;
+      }
+    });
     }
   }
 };
@@ -98,6 +107,7 @@ export default {
   align-items: center;
   border: 0.5px solid black;
   padding: 1em;
+  width: 20em;
 }
 .comment-list-item-context {
   display: flex;
@@ -122,6 +132,6 @@ export default {
   display: flex;
   justify-content: space-between;
   padding-bottom: 1em;
-  margin-left: 10em;
+  margin-left: 5em;
 }
 </style>

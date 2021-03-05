@@ -20,7 +20,14 @@ export default {
     CommentCreate,
   },
   async created(){
-    this.getCommentList();
+    await this.$axios(
+      {
+        url : this.$microSeviceUrl + '/contents?content_id='+ this.contentId +'&act_type=comment_inquery',
+        method:'get'
+      }).then( ret =>{
+      console.log("results :" , ret);
+      this.comments =  ret.data.results;
+    });
   },
   data() {
     return {
@@ -28,18 +35,15 @@ export default {
     }
   },
   methods: {
-    async getCommentList(){
-       await this.$axios(
-          {
-            url : this.$microSeviceUrl + '/contents?content_id='+ this.contentId +'&act_type=comment_inquery',
-            method:'get'
-          }).then( ret =>{
-          console.log("results :" , ret);
-          this.comments =  ret.data.results;
-        });
-    },
     async reloadComments() {
-      this.getCommentList();
+      await this.$axios(
+      {
+        url : this.$microSeviceUrl + '/contents?content_id='+ this.contentId +'&act_type=comment_inquery',
+        method:'get'
+      }).then( ret =>{
+        console.log("results :" , ret);
+        this.comments =  ret.data.results;
+      });
     }
   }
 };
