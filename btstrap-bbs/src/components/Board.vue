@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     async getBoardList(){
-      this.$axios.get('http://127.0.0.1:8000/contents').then( ret =>{
+      this.$axios.get(  this.$microSeviceUrl +'/contents').then( ret =>{
 
         console.log("results :" , ret);
         this.items = ret.data.results;

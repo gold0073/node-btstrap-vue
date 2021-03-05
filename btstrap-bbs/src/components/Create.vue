@@ -34,7 +34,7 @@ export default {
       const contentId = Number(this.$route.params.contentId)
       await this.$axios(
         {
-          url :'http://127.0.0.1:8000/contents?content_id='+Number(this.$route.params.contentId),
+          url : this.$microSeviceUrl +'/contents?content_id='+Number(this.$route.params.contentId),
           method:'get'
         }).then( ret =>{
         console.log("results :" , ret);
@@ -49,11 +49,11 @@ export default {
       let items = data.Content.sort((a,b) => {return b.content_id - a.content_id})
       const content_id = items[0].content_id + 1
 
-      await  this.$axios.post("http://127.0.0.1:8000/contents", qs.stringify({
+      await  this.$axios.post( this.$microSeviceUrl + '/contents', qs.stringify({
         user_id: this.userId,
         title: this.subject,
         context: this.context,
-        act_type : "cr_type"
+        act_type : "content_create"
       })).then(ret =>{
         console.log("Post ==>", ret);
         return ret;
@@ -64,11 +64,11 @@ export default {
       })
     },
     async updateContent() {
-      await  this.$axios.post("http://127.0.0.1:8000/contents", qs.stringify({
+      await  this.$axios.post( this.$microSeviceUrl  + '/contents', qs.stringify({
         content_id: Number(this.$route.params.contentId),
         title: this.subject,
         context: this.context,
-        act_type : "up_type"
+        act_type : "content_update"
       })).then(ret =>{
         console.log("Post ==>", ret);
         return ret;

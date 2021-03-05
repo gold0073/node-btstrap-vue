@@ -74,7 +74,7 @@ export default {
     //상세뷰
      await this.$axios(
           {
-            url :'http://127.0.0.1:8000/contents?content_id='+Number(this.$route.params.contentId),
+            url : this.$microSeviceUrl + '/contents?content_id='+Number(this.$route.params.contentId),
             method:'get'
           }).then( ret =>{
           console.log("results :" , ret);
@@ -100,9 +100,9 @@ export default {
       });
       */
 
-      await  this.$axios.post("http://127.0.0.1:8000/contents", qs.stringify({
+      await  this.$axios.post( this.$microSeviceUrl + "/contents", qs.stringify({
         content_id:  this.$route.params.contentId,
-        act_type : "del_type"
+        act_type : "content_delete"
       })).then(ret =>{
         console.log("Post ==>", ret);
         return ret;

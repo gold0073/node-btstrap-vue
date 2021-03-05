@@ -10,6 +10,8 @@ import router from './router'
 
 Vue.prototype.$axios = axios;
 
+Vue.prototype.$microSeviceUrl = 'http://127.0.0.1:8000';
+
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
@@ -21,4 +23,5 @@ new Vue({
   router,
   components: { App },
   template: '<App/>' 
+
 })
