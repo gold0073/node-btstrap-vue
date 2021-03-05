@@ -43,13 +43,8 @@ export default {
   },
   methods: {
     async getBoardList(){
-<<<<<<< HEAD
       this.$axios.get('http://127.0.0.1:8000/contents').then( ret =>{
-=======
-      
-      this.$axios.get('http://127.0.0.1:8000/contents').then( ret =>{
-        
->>>>>>> 4c9781fc820b5ffa01c575f0a39ec3dd1cce362e
+
         console.log("results :" , ret);
         this.items = ret.data.results;
         return ret;
