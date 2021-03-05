@@ -35,31 +35,83 @@
 
 <script>
 import data from "@/data";
+import qs from "qs";
 import CommentList from "./CommentList";
 export default {
   name: "ContentDetail",
   components: {
     CommentList,
   },
+   async created(){
+    this.getContentDetail();
+  },
   data() {
     const contentId = Number(this.$route.params.contentId);
-    const contentData = data.Content.filter(item => item.content_id === contentId)[0]
     return {
       contentId: contentId,
-      title: contentData.title,
-      context: contentData.context,
-      user: data.User.filter(item => item.user_id === contentData.user_id)[0]
-        .name,
-      created: contentData.created_at
+      title: '',
+      context: '',
+      user: '',
+      created: ''
     };
   },
   methods: {
-    deleteData() {
-      const content_index = data.Content.findIndex(item => item.content_id === this.contentId);
-      data.Content.splice(content_index, 1)
+
+    async getContentDetail(){
+     console.log("contentId==>" , this.$route.params.contentId);
+
+     /*
+     await this.$axios.get('http://127.0.0.1:8000/contents?content_id='+Number(this.$route.params.contentId)).then( ret =>{
+        console.log("results :" , ret);
+        this.title = ret.data.results[0].title;
+        this.context = ret.data.results[0].context;
+        this.user = ret.data.results[0].user_name;
+        this.created = ret.data.results[0].created_at;
+        return ret;
+      });
+     */
+
+    //상세뷰
+     await this.$axios(
+          {
+            url :'http://127.0.0.1:8000/contents?content_id='+Number(this.$route.params.contentId),
+            method:'get'
+          }).then( ret =>{
+          console.log("results :" , ret);
+          this.title = ret.data.results[0].title;
+          this.context = ret.data.results[0].context;
+          this.user = ret.data.results[0].user_name;
+          this.created = ret.data.results[0].created_at;
+          return ret;
+        });
+    },
+    //COntent 삭제
+    async deleteData() {
+      console.log("contentId==>" , this.$route.params.contentId);
+
+      /* delete 메소드가 전달이 안됨
+      await this.$axios(
+        {
+          url: 'http://127.0.0.1:8000/contents?content_id='+  this.$route.params.contentId,
+          method:'post',
+        }).then( ret =>{
+        console.log("results :" , ret);
+        return ret;
+      });
+      */
+
+      await  this.$axios.post("http://127.0.0.1:8000/contents", qs.stringify({
+        content_id:  this.$route.params.contentId,
+        act_type : "del_type"
+      })).then(ret =>{
+        console.log("Post ==>", ret);
+        return ret;
+      });
+
       this.$router.push({
-        path: '/board/free'
+        path: '/board/free/'
       })
+
     },
     updateData() {
       this.$router.push({
@@ -95,16 +147,16 @@ export default {
   border: 1px solid black;
   margin-top: 1rem;
   padding-top: 1rem;
-  min-height: 720px;
+  min-height: 320px;
 }
 .content-detail-button {
   border: 1px solid black;
   margin-top: 1rem;
-  padding: 2rem;
+  padding: 0.3rem;
 }
 .content-detail-comment {
   border: 1px solid black;
   margin-top: 1rem;
-  padding: 2rem;
+  padding: 0.5rem;
 }
 </style>

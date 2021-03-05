@@ -8,9 +8,6 @@
 <script>
 export default {
   name: 'Board',
-  created() {
-    this.item = axios.get('http://localhost:8000/contents')
-  },
   data() {
     return {
 
@@ -46,14 +43,11 @@ export default {
   },
   methods: {
     async getBoardList(){
-      
-      this.$http.get('http://127.0.0.1:8000/contents').then( ret =>{
-        
+      this.$axios.get('http://127.0.0.1:8000/contents').then( ret =>{
         console.log("results :" , ret);
         this.items = ret.data.results;
         return ret;
       });
-
     },
     rowClick(item, index, e) {
       this.$router.push({

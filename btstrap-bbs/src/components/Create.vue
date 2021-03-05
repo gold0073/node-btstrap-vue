@@ -13,7 +13,7 @@
 </template>
 <script>
 import data from '@/data'
-
+import qs from 'qs'
 
 export default {
   name: 'Create',
@@ -41,33 +41,35 @@ export default {
       let items = data.Content.sort((a,b) => {return b.content_id - a.content_id})
       const content_id = items[0].content_id + 1
 
-      await  this.$http.post("http://127.0.0.1:8000/contents", {
-        user_id: this.userId,
-        title: this.subject,
-        context: this.context
-      });
-
-      /*
-      data.Content.push({
-        content_id: content_id,
+      await  this.$axios.post("http://127.0.0.1:8000/contents", qs.stringify({
         user_id: this.userId,
         title: this.subject,
         context: this.context,
-        created_at: this.createdAt,
-        updated_at: null
-      })
-      */
+        act_type : "cr_type"
+      })).then(ret =>{
+        console.log("Post ==>", ret);
+        return ret;
+      });
 
       this.$router.push({
         path: '/board/free/'
       })
     },
-    updateContent() {
-      this.updateObject.title = this.subject;
-      this.updateObject.context = this.context;
+    async updateContent() {
+      await  this.$axios.post("http://127.0.0.1:8000/contents", qs.stringify({
+        content_id: Number(this.$route.params.contentId),
+        title: this.subject,
+        context: this.context,
+        act_type : "up_type"
+      })).then(ret =>{
+        console.log("Post ==>", ret);
+        return ret;
+      });
+
       this.$router.push({
         path: '/board/free/'
       })
+
     },
     cancle() {
       this.$router.push({
