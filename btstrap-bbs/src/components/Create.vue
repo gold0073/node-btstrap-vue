@@ -41,7 +41,22 @@ export default {
       let items = data.Content.sort((a,b) => {return b.content_id - a.content_id})
       const content_id = items[0].content_id + 1
 
+<<<<<<< HEAD
       await  this.$axios.post("http://127.0.0.1:8000/contents", qs.stringify({
+=======
+      await  this.$axios.post("http://127.0.0.1:8000/contents",{
+          header: {
+            'Access-Control-Allow-Origin' : '*'
+          }
+        }).then(ret => {
+         console.log("Content Save :" ,ret);
+         return ret;
+        });
+
+      /*
+      data.Content.push({
+        content_id: content_id,
+>>>>>>> 4c9781fc820b5ffa01c575f0a39ec3dd1cce362e
         user_id: this.userId,
         title: this.subject,
         context: this.context,

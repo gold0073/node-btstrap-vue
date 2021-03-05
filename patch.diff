@@ -1,0 +1,77 @@
+diff --git a/btstrap-bbs/package.json b/btstrap-bbs/package.json
+index bea2333..ad07244 100644
+--- a/btstrap-bbs/package.json
++++ b/btstrap-bbs/package.json
+@@ -16,7 +16,10 @@
+     "bootstrap": "^4.6.0",
+     "bootstrap-vue": "^2.21.2",
+     "qs": "^6.9.6",
++<<<<<<< HEAD
+     "query-string": "^6.14.1",
++=======
++>>>>>>> 4c9781fc820b5ffa01c575f0a39ec3dd1cce362e
+     "querystring": "^0.2.1",
+     "vue": "^2.6.12",
+     "vue-router": "^3.0.1"
+diff --git a/btstrap-bbs/src/components/Board.vue b/btstrap-bbs/src/components/Board.vue
+index 37224e3..11cbf96 100644
+--- a/btstrap-bbs/src/components/Board.vue
++++ b/btstrap-bbs/src/components/Board.vue
+@@ -43,7 +43,13 @@ export default {
+   },
+   methods: {
+     async getBoardList(){
++<<<<<<< HEAD
+       this.$axios.get('http://127.0.0.1:8000/contents').then( ret =>{
++=======
++      
++      this.$axios.get('http://127.0.0.1:8000/contents').then( ret =>{
++        
++>>>>>>> 4c9781fc820b5ffa01c575f0a39ec3dd1cce362e
+         console.log("results :" , ret);
+         this.items = ret.data.results;
+         return ret;
+diff --git a/btstrap-bbs/src/components/Create.vue b/btstrap-bbs/src/components/Create.vue
+index 92390d6..11c22f5 100644
+--- a/btstrap-bbs/src/components/Create.vue
++++ b/btstrap-bbs/src/components/Create.vue
+@@ -41,7 +41,22 @@ export default {
+       let items = data.Content.sort((a,b) => {return b.content_id - a.content_id})
+       const content_id = items[0].content_id + 1
+ 
++<<<<<<< HEAD
+       await  this.$axios.post("http://127.0.0.1:8000/contents", qs.stringify({
++=======
++      await  this.$axios.post("http://127.0.0.1:8000/contents",{
++          header: {
++            'Access-Control-Allow-Origin' : '*'
++          }
++        }).then(ret => {
++         console.log("Content Save :" ,ret);
++         return ret;
++        });
++
++      /*
++      data.Content.push({
++        content_id: content_id,
++>>>>>>> 4c9781fc820b5ffa01c575f0a39ec3dd1cce362e
+         user_id: this.userId,
+         title: this.subject,
+         context: this.context,
+diff --git a/btstrap-bbs/src/main.js b/btstrap-bbs/src/main.js
+index 4f5725f..bd401af 100644
+--- a/btstrap-bbs/src/main.js
++++ b/btstrap-bbs/src/main.js
+@@ -9,6 +9,12 @@ import App from './App'
+ import router from './router'
+ 
+ Vue.prototype.$axios = axios;
++<<<<<<< HEAD
++=======
++
++axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
++axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
++>>>>>>> 4c9781fc820b5ffa01c575f0a39ec3dd1cce362e
+ 
+ import 'bootstrap/dist/css/bootstrap.css'
+ import 'bootstrap-vue/dist/bootstrap-vue.css'
