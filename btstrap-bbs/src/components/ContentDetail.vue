@@ -6,7 +6,7 @@
           <div class="content-detail-content-info-left-number">
             {{contentId}}
           </div>
-          <div class="content-detail-content-info-left-subject">
+          <div class="content-detail-content-info-right-subject">
             {{title}}
           </div>
         </div>
@@ -128,7 +128,7 @@ export default {
   justify-content: space-between;
 }
 .content-detail-content-info-left {
-  width: 720px;
+  width: 120px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
