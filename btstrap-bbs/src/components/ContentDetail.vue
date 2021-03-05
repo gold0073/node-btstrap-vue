@@ -74,7 +74,7 @@ export default {
     //상세뷰
      await this.$axios(
           {
-            url : this.$microSeviceUrl + '/contents?content_id='+Number(this.$route.params.contentId),
+            url : this.$microSeviceUrl + '/contents?content_id='+Number(this.$route.params.contentId)+'&act_type=content_inquery',
             method:'get'
           }).then( ret =>{
           console.log("results :" , ret);

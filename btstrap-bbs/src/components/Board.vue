@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     async getBoardList(){
-      this.$axios.get(  this.$microSeviceUrl +'/contents').then( ret =>{
+      this.$axios.get(  this.$microSeviceUrl +'/contents?act_type=content_inquery').then( ret =>{
 
         console.log("results :" , ret);
         this.items = ret.data.results;

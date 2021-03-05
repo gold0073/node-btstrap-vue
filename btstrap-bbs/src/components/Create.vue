@@ -34,7 +34,7 @@ export default {
       const contentId = Number(this.$route.params.contentId)
       await this.$axios(
         {
-          url : this.$microSeviceUrl +'/contents?content_id='+Number(this.$route.params.contentId),
+          url : this.$microSeviceUrl +'/contents?content_id='+Number(this.$route.params.contentId) +'&act_type=content_inquery',
           method:'get'
         }).then( ret =>{
         console.log("results :" , ret);
