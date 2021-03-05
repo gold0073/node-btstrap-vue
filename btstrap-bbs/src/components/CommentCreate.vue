@@ -16,6 +16,9 @@
 </template>
 <script>
 import data from "@/data";
+import qs from 'qs'
+
+
 export default {
   name: "CommentCreate",
   props: {
@@ -33,30 +36,30 @@ export default {
     };
   },
   methods: {
-    createComment() {
-      const comment_id = data.Comment[data.Comment.length - 1].comment_id + 1;
-      data.Comment.push({
-        comment_id: comment_id,
+    async createComment() {
+      
+      await  this.$axios.post( this.$microSeviceUrl + '/contents', qs.stringify({
         user_id: 1,
         content_id: this.contentId,
         context: this.context,
-        created_at: "2019-04-19 14:11:11",
-        updated_at: null
+        act_type : "comment_create"
+      })).then(ret =>{
+        console.log("Post ==>", ret);
       });
+    
       this.reloadComments();
-      this.subCommentToggle();
       this.context = "";
     },
-    createSubComment() {
-      const subcomment_id = data.SubComment[data.SubComment.length - 1].subcomment_id + 1;
-      data.SubComment.push({
-        subcomment_id: subcomment_id,
-        comment_id: this.commentId,
+    async createSubComment() {
+      await  this.$axios.post( this.$microSeviceUrl + '/contents', qs.stringify({
         user_id: 1,
+        comment_id:  this.commentId,
         context: this.context,
-        created_at: "2019-04-19 16:22:11",
-        updated_at: null
+        act_type : "sub_comment_create"
+      })).then(ret =>{
+        console.log("Post ==>", ret);
       });
+
       this.reloadSubComments();
       this.subCommentToggle();
       this.context = "";

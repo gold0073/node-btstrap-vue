@@ -47,7 +47,6 @@ export default {
 
         console.log("results :" , ret);
         this.items = ret.data.results;
-        return ret;
       });
     },
     rowClick(item, index, e) {

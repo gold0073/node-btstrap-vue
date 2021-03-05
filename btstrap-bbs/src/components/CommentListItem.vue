@@ -9,7 +9,7 @@
       <div class="comment-list-item-button">
         <b-button variant="info">수정</b-button>
         <b-button variant="info">삭제</b-button>
-        <b-button variant="info" @click="subCommentToggle">덧글 달기</b-button>
+        <b-button variant="info" @click="subCommentToggle">대댓글</b-button>
       </div>
     </div>
     <template v-if="subCommentCreateToggle">
@@ -50,35 +50,36 @@ export default {
   components: {
     CommentCreate
   },
+  async created(){
+    this.getSubComment();
+  },
   data() {
     return {
       name: data.User.filter(
         item => item.user_id === this.commentObj.user_id
       )[0].name,
-      subCommentList: data.SubComment.filter(
-        item => item.comment_id === this.commentObj.comment_id
-      ).map(subCommentItem => ({
-        ...subCommentItem,
-        user_name: data.User.filter(
-          item => item.user_id === subCommentItem.user_id
-        )[0].name
-      })),
+      subCommentList: [],
       subCommentCreateToggle: false
     };
   },
   methods: {
+    async getSubComment(){
+      await this.$axios(
+          {
+            url : this.$microSeviceUrl + '/contents?comment_id='+ this.commentObj.comment_id +'&act_type=sub_comment_inquery',
+            method:'get'
+          }).then( ret =>{
+          console.log("results :" , ret);
+          this.subCommentList =  ret.data.results;
+          
+        });
+
+    },
     subCommentToggle() {
       this.subCommentCreateToggle = !this.subCommentCreateToggle;
     },
-    reloadSubComments() {
-      this.subCommentList = data.SubComment.filter(
-        item => item.comment_id === this.commentObj.comment_id
-      ).map(subCommentItem => ({
-        ...subCommentItem,
-        user_name: data.User.filter(
-          item => item.user_id === subCommentItem.user_id
-        )[0].name 
-      }));
+    async reloadSubComments() {
+       this.getSubComment();
     }
   }
 };
@@ -88,6 +89,7 @@ export default {
   display: flex;
   justify-content: space-between;
   padding-bottom: 1em;
+  height:115px;
 }
 .comment-list-item-name {
   display: flex;
@@ -102,15 +104,16 @@ export default {
   justify-content: center;
   align-items: center;
   width: 50em;
+  height:100px;
   border: 0.5px solid black;
 }
 .comment-list-item-button {
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border: 0.5px solid black;
-  padding: 1em;
+  padding: 1.5em;
+  width: 20em;
 }
 .btn {
   margin-bottom: 1em;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div :key="item.comment_id" v-for="item in comments">
+    <div class='content-detail-list' :key="item.comment_id" v-for="item in comments">
       <CommentListItem :commentObj="item"/>
     </div>
     <CommentCreate :contentId="contentId" :reloadComments="reloadComments"/>
@@ -19,14 +19,27 @@ export default {
     CommentListItem,
     CommentCreate,
   },
+  async created(){
+    this.getCommentList();
+  },
   data() {
     return {
-      comments: data.Comment.filter(item => item.content_id === this.contentId),
+      comments: [],
     }
   },
   methods: {
-    reloadComments() {
-      this.comments = data.Comment.filter(item => item.content_id === this.contentId)
+    async getCommentList(){
+       await this.$axios(
+          {
+            url : this.$microSeviceUrl + '/contents?content_id='+ this.contentId +'&act_type=comment_inquery',
+            method:'get'
+          }).then( ret =>{
+          console.log("results :" , ret);
+          this.comments =  ret.data.results;
+        });
+    },
+    async reloadComments() {
+      this.getCommentList();
     }
   }
 };

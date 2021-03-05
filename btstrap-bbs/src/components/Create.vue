@@ -40,7 +40,7 @@ export default {
         console.log("results :" , ret);
         this.subject = ret.data.results[0].title;
         this.context = ret.data.results[0].context;  
-        return ret;
+        
         });
     }
   },
@@ -56,7 +56,7 @@ export default {
         act_type : "content_create"
       })).then(ret =>{
         console.log("Post ==>", ret);
-        return ret;
+        
       });
 
       this.$router.push({
@@ -71,7 +71,7 @@ export default {
         act_type : "content_update"
       })).then(ret =>{
         console.log("Post ==>", ret);
-        return ret;
+        
       });
 
       this.$router.push({

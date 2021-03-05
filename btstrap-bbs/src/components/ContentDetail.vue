@@ -60,35 +60,30 @@ export default {
     async getContentDetail(){
      console.log("contentId==>" , this.$route.params.contentId);
 
-     /*
-     await this.$axios.get('http://127.0.0.1:8000/contents?content_id='+Number(this.$route.params.contentId)).then( ret =>{
+     await this.$axios.get('http://127.0.0.1:8000/contents?content_id='+Number(this.$route.params.contentId) +'&act_type=content_inquery').then( ret =>{
         console.log("results :" , ret);
         this.title = ret.data.results[0].title;
         this.context = ret.data.results[0].context;
         this.user = ret.data.results[0].user_name;
         this.created = ret.data.results[0].created_at;
-        return ret;
+        
       });
-     */
-
-    //상세뷰
-     await this.$axios(
-          {
-            url : this.$microSeviceUrl + '/contents?content_id='+Number(this.$route.params.contentId)+'&act_type=content_inquery',
-            method:'get'
-          }).then( ret =>{
-          console.log("results :" , ret);
-          this.title = ret.data.results[0].title;
-          this.context = ret.data.results[0].context;
-          this.user = ret.data.results[0].user_name;
-          this.created = ret.data.results[0].created_at;
-          return ret;
-        });
     },
     //COntent 삭제
     async deleteData() {
       console.log("contentId==>" , this.$route.params.contentId);
+      await  this.$axios.post( this.$microSeviceUrl + "/contents", qs.stringify({
+        content_id:  this.$route.params.contentId,
+        act_type : "content_delete"
+      })).then(ret =>{
+        console.log("Post ==>", ret);
+        
+      });
 
+      this.$router.push({
+        path: '/board/free/'
+      })
+      
       /* delete 메소드가 전달이 안됨
       await this.$axios(
         {
@@ -96,21 +91,9 @@ export default {
           method:'post',
         }).then( ret =>{
         console.log("results :" , ret);
-        return ret;
+        
       });
       */
-
-      await  this.$axios.post( this.$microSeviceUrl + "/contents", qs.stringify({
-        content_id:  this.$route.params.contentId,
-        act_type : "content_delete"
-      })).then(ret =>{
-        console.log("Post ==>", ret);
-        return ret;
-      });
-
-      this.$router.push({
-        path: '/board/free/'
-      })
 
     },
     updateData() {
@@ -147,7 +130,7 @@ export default {
   border: 1px solid black;
   margin-top: 1rem;
   padding-top: 1rem;
-  min-height: 320px;
+  min-height: 170px;
 }
 .content-detail-button {
   border: 1px solid black;
@@ -156,7 +139,8 @@ export default {
 }
 .content-detail-comment {
   border: 1px solid black;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   padding: 0.5rem;
+  min-height: 50px;
 }
 </style>
