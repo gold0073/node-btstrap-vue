@@ -7,7 +7,7 @@
 </template>
 <script>
 export default {
-  name: 'Board',
+  name: 'PostgreBoard',
   data() {
     return {
 
@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     async getBoardList(){
-      this.$axios.get(  this.$microSeviceUrl +'/mdb_contents?act_type=content_inquery').then( ret =>{
+      this.$axios.get(  this.$microSeviceUrl +'/pgdb_contents?act_type=content_inquery').then( ret =>{
 
         console.log("results :" , ret);
         this.items = ret.data.results;
@@ -51,12 +51,12 @@ export default {
     },
     rowClick(item, index, e) {
       this.$router.push({
-        path: `/board/free/detail/${item.content_id}`
+        path: `/pgboard/free/detail/${item.content_id}`
       })
     },
     writeContent() {
       this.$router.push({
-        path: '/board/free/create'
+        path: '/pgboard/free/create'
       })
     }
   }

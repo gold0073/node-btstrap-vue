@@ -43,7 +43,7 @@
 import data from "@/data";
 import CommentCreate from "./CommentCreate";
 export default {
-  name: "CommentListItem",
+  name: "PostgreCommentListItem",
   props: {
     commentObj: Object
   },
@@ -53,7 +53,7 @@ export default {
   async created(){
     await this.$axios(
       {
-        url : this.$microSeviceUrl + '/mdb_contents?comment_id='+ this.commentObj.comment_id +'&act_type=sub_comment_inquery',
+        url : this.$microSeviceUrl + '/pgdb_contents?comment_id='+ this.commentObj.comment_id +'&act_type=sub_comment_inquery',
         method:'get'
       }).then( ret =>{
         console.log("results :" , ret);
@@ -80,7 +80,7 @@ export default {
     async reloadSubComments() {
       await this.$axios(
       {
-        url : this.$microSeviceUrl + '/mdb_contents?comment_id='+ this.commentObj.comment_id +'&act_type=sub_comment_inquery',
+        url : this.$microSeviceUrl + '/pgdb_contents?comment_id='+ this.commentObj.comment_id +'&act_type=sub_comment_inquery',
         method:'get'
       }).then( ret =>{
       console.log("results :" , ret);

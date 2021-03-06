@@ -11,7 +11,7 @@ import data from "@/data";
 import CommentListItem from './CommentListItem';
 import CommentCreate from './CommentCreate';
 export default {
-  name: "CommentList",
+  name: "PostgreCommentList",
   props: {
     contentId: Number
   },
@@ -22,7 +22,7 @@ export default {
   async created(){
     await this.$axios(
       {
-        url : this.$microSeviceUrl + '/mdb_contents?content_id='+ this.contentId +'&act_type=comment_inquery',
+        url : this.$microSeviceUrl + '/pgdb_contents?content_id='+ this.contentId +'&act_type=comment_inquery',
         method:'get'
       }).then( ret =>{
       console.log("results :" , ret);
@@ -38,7 +38,7 @@ export default {
     async reloadComments() {
       await this.$axios(
       {
-        url : this.$microSeviceUrl + '/mdb_contents?content_id='+ this.contentId +'&act_type=comment_inquery',
+        url : this.$microSeviceUrl + '/pgdb_contents?content_id='+ this.contentId +'&act_type=comment_inquery',
         method:'get'
       }).then( ret =>{
         console.log("results :" , ret);

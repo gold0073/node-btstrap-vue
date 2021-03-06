@@ -38,7 +38,7 @@ import data from "@/data";
 import qs from "qs";
 import CommentList from "./CommentList";
 export default {
-  name: "ContentDetail",
+  name: "PostgreContentDetail",
   components: {
     CommentList,
   },
@@ -60,7 +60,7 @@ export default {
     async getContentDetail(){
      console.log("contentId==>" , this.$route.params.contentId);
 
-     await this.$axios.get('http://127.0.0.1:8000/mdb_contents?content_id='+Number(this.$route.params.contentId) +'&act_type=content_inquery').then( ret =>{
+     await this.$axios.get('http://127.0.0.1:8000/pgdb_contents?content_id='+Number(this.$route.params.contentId) +'&act_type=content_inquery').then( ret =>{
         console.log("results :" , ret);
         this.title = ret.data.results[0].title;
         this.context = ret.data.results[0].context;
@@ -72,7 +72,7 @@ export default {
     //COntent 삭제
     async deleteData() {
       console.log("contentId==>" , this.$route.params.contentId);
-      await  this.$axios.post( this.$microSeviceUrl + "/mdb_contents", qs.stringify({
+      await  this.$axios.post( this.$microSeviceUrl + "/pgdb_contents", qs.stringify({
         content_id:  this.$route.params.contentId,
         act_type : "content_delete"
       })).then(ret =>{
@@ -81,13 +81,13 @@ export default {
       });
 
       this.$router.push({
-        path: '/board/free/'
+        path: '/pgboard/free/'
       })
       
       /* delete 메소드가 전달이 안됨
       await this.$axios(
         {
-          url: 'http://127.0.0.1:8000/mdb_contents?content_id='+  this.$route.params.contentId,
+          url: 'http://127.0.0.1:8000/pgdb_contents?content_id='+  this.$route.params.contentId,
           method:'post',
         }).then( ret =>{
         console.log("results :" , ret);
@@ -98,7 +98,7 @@ export default {
     },
     updateData() {
       this.$router.push({
-        path: `/board/free/create/${this.contentId}`
+        path: `/pgboard/free/create/${this.contentId}`
       })
     }
   }

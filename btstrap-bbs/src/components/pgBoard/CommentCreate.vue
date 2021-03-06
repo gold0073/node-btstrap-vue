@@ -20,7 +20,7 @@ import qs from 'qs'
 
 
 export default {
-  name: "CommentCreate",
+  name: "PostgreCommentCreate",
   props: {
     contentId: Number,
     reloadComments: Function,
@@ -38,7 +38,7 @@ export default {
   methods: {
     async createComment() {
       
-      await  this.$axios.post( this.$microSeviceUrl + '/mdb_contents', qs.stringify({
+      await  this.$axios.post( this.$microSeviceUrl + '/pgdb_contents', qs.stringify({
         user_id: 1,
         content_id: this.contentId,
         context: this.context,
@@ -51,7 +51,7 @@ export default {
       this.context = "";
     },
     async createSubComment() {
-      await  this.$axios.post( this.$microSeviceUrl + '/mdb_contents', qs.stringify({
+      await  this.$axios.post( this.$microSeviceUrl + '/pgdb_contents', qs.stringify({
         user_id: 1,
         comment_id:  this.commentId,
         context: this.context,

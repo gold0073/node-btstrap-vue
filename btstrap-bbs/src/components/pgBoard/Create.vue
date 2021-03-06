@@ -16,7 +16,7 @@ import data from '@/data'
 import qs from 'qs'
 
 export default {
-  name: 'Create',
+  name: 'PostgreCreate',
   data() {
     return {
       subject: '',
@@ -34,7 +34,7 @@ export default {
       const contentId = Number(this.$route.params.contentId)
       await this.$axios(
         {
-          url : this.$microSeviceUrl +'/mdb_contents?content_id='+Number(this.$route.params.contentId) +'&act_type=content_inquery',
+          url : this.$microSeviceUrl +'/pgdb_contents?content_id='+Number(this.$route.params.contentId) +'&act_type=content_inquery',
           method:'get'
         }).then( ret =>{
         console.log("results :" , ret);
@@ -49,7 +49,7 @@ export default {
       let items = data.Content.sort((a,b) => {return b.content_id - a.content_id})
       const content_id = items[0].content_id + 1
 
-      await  this.$axios.post( this.$microSeviceUrl + '/mdb_contents', qs.stringify({
+      await  this.$axios.post( this.$microSeviceUrl + '/pgdb_contents', qs.stringify({
         user_id: this.userId,
         title: this.subject,
         context: this.context,
@@ -60,11 +60,11 @@ export default {
       });
 
       this.$router.push({
-        path: '/board/free/'
+        path: '/pgboard/free'
       })
     },
     async updateContent() {
-      await  this.$axios.post( this.$microSeviceUrl  + '/mdb_contents', qs.stringify({
+      await  this.$axios.post( this.$microSeviceUrl  + '/pgdb_contents', qs.stringify({
         content_id: Number(this.$route.params.contentId),
         title: this.subject,
         context: this.context,
@@ -75,13 +75,13 @@ export default {
       });
 
       this.$router.push({
-        path: '/board/free/'
+        path: '/pgboard/free'
       })
 
     },
     cancle() {
       this.$router.push({
-        path: '/board/free/'
+        path: '/pgboard/free'
       })
     }
   }
