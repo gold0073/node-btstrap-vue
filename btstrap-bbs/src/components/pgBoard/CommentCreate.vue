@@ -28,6 +28,7 @@ export default {
     subCommentToggle: Function,
     isSubComment: Boolean,
     commentId: Number,
+    subCommentId: Number
   },
   data() {
     return {
