@@ -13,7 +13,7 @@ import CommentCreate from './CommentCreate';
 export default {
   name: "PostgreCommentList",
   props: {
-    contentId: Number
+    contentId: Number,
   },
   components: {
     CommentListItem,
