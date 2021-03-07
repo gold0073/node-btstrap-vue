@@ -1,6 +1,9 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <br />
+    <h1>{{ title_1 }}</h1>
+    <h1>{{ title_2 }}</h1>
+    <img src="../img/mservice.jpg" style="height:300px"/>
     <h2>Essential Links</h2>
     <ul>
       <li>
@@ -88,7 +91,9 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      title_1: `NodeJS 마이크로서비스로 만드는`,
+      title_2: `VueJS 게시판`,      
+      msg: ``,      
     }
   }
 }

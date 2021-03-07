@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand href="#">마이크로서비스-Vue.js로 게시판</b-navbar-brand>
+      <b-navbar-brand to="/">Vue.js 게시판</b-navbar-brand>
 
       <b-navbar-toggle target="nav_collapse"/>
 
