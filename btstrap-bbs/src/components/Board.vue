@@ -1,6 +1,11 @@
 <template>
   <div>
-    
+    <div class="p-1 mb-1 bg-dark text-primary">
+    <h3 data-v-792738cd="" class=" text-center text-md-left bd-text-purple-bright">
+      MariaDB
+      <span data-v-792738cd="" class="text-vue-green">Board</span>
+    </h3> 
+    </div>
     <b-table striped hover :items="items" :fields="fields"  @row-clicked="rowClick"></b-table>
     <b-button @click="writeContent">글쓰기</b-button>
   </div>
@@ -62,3 +67,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+.text-vue-green[data-v-792738cd] {
+    color: #42b883;
+}
+</style>
