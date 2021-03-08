@@ -3,8 +3,8 @@
     <br />
     <h1>{{ title_1 }}</h1>
     <h1>{{ title_2 }}</h1>
-    <img src="../img/mservice.jpg" style="height:300px"/>
-    <section data-v-792738cd="" class="bd-masthead pt-3 pt-sm-5 pb-2"><article data-v-792738cd="" class="container"><div data-v-792738cd="" class="row mb-2 mb-md-3 mb-lg-4 no-gutters align-items-center"><aside data-v-792738cd="" class="logo-aside mb-4 mb-md-0 col-md-4 order-md-2 col-12"><svg data-v-10aac690="" data-v-792738cd="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" version="1.1" shape-rendering="geometricPrecision" fill-rule="evenodd" clip-rule="evenodd" preserveAspectRatio="xMidYMid meet" role="img" focusable="false" class="bv-logo"><title data-v-10aac690="">BootstrapVue Logo</title> <defs data-v-10aac690=""><filter data-v-10aac690="" id="logo-shadow" filterUnits="objectBoundingBox" x="-50%" y="-50%" width="200%" height="200%"><feOffset data-v-10aac690="" in="SourceAlpha" dx="-10" dy="25" result="ALPHA1"></feOffset> <feMorphology data-v-10aac690="" in="ALPHA1" operator="dilate" radius="15" result="ALPHA"></feMorphology> <feGaussianBlur data-v-10aac690="" in="ALPHA" stdDeviation="20" result="DROP"></feGaussianBlur> <feFlood data-v-10aac690="" in="DROP" flood-color="#333" result="SOLID"></feFlood> <feComposite data-v-10aac690="" in="DROP" in2="SOLID" operator="in" result="SHADOW1"></feComposite> <feComponentTransfer data-v-10aac690="" in="SHADOW1" result="SHADOW"><feFuncA data-v-10aac690="" type="linear" slope="0.55"></feFuncA></feComponentTransfer> <feMerge data-v-10aac690=""><feMergeNode data-v-10aac690="" in="SHADOW"></feMergeNode> <feMergeNode data-v-10aac690="" in="SourceGraphic"></feMergeNode></feMerge></filter></defs> <g data-v-10aac690=""><g data-v-10aac690="" filter="url(#logo-shadow)" class="logo-dark-v"><path data-v-10aac690="" fill="#34495E" d="M747 311L602 562 458 311H227l375 651 376-651z"></path></g> <g data-v-10aac690="" filter="url(#logo-shadow)" class="logo-purple-v"><path data-v-10aac690="" fill="#563D7C" fill-rule="nonzero" d="M219 195h762L599 857z"></path> <path data-v-10aac690="" fill="#ffffff" d="M501 282l132 0c25,0 44,5 59,16 15,12 22,28 22,51 0,14 -3,26 -10,35 -7,10 -16,18 -29,23l0 1c17,3 30,11 38,24 9,12 13,27 13,46 0,11 -2,21 -6,30 -3,9 -9,17 -17,24 -9,6 -19,12 -32,16 -12,4 -28,6 -45,6l-125 0 0 -272 0 0zm48 114l77 0c12,0 21,-4 29,-10 8,-7 11,-16 11,-28 0,-14 -3,-24 -10,-29 -7,-6 -17,-9 -30,-9l-77 0 0 76 0 0zm0 119l84 0c14,0 26,-4 33,-11 8,-8 13,-19 13,-32 0,-14 -4,-24 -13,-31 -8,-8 -19,-11 -33,-11l-84 0 0 85z" class="logo-white-b"></path></g> <g data-v-10aac690="" filter="url(#logo-shadow)" class="logo-green-v"><path data-v-10aac690="" fill="#41B883" d="M839 357L600 771 361 357H202l398 690 398-690z"></path></g></g></svg></aside> <header data-v-792738cd="" class="col-md-8 order-md-1 col-12"><h1 data-v-792738cd="" class="mb-3 text-center text-md-left bd-text-purple-bright">
+    <img src="../img/mservice.jpg" style="height:300px" />
+    <!--section data-v-792738cd="" class="bd-masthead pt-3 pt-sm-5 pb-2"><article data-v-792738cd="" class="container"><div data-v-792738cd="" class="row mb-2 mb-md-3 mb-lg-4 no-gutters align-items-center"><aside data-v-792738cd="" class="logo-aside mb-4 mb-md-0 col-md-4 order-md-2 col-12"><svg data-v-10aac690="" data-v-792738cd="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" version="1.1" shape-rendering="geometricPrecision" fill-rule="evenodd" clip-rule="evenodd" preserveAspectRatio="xMidYMid meet" role="img" focusable="false" class="bv-logo"><title data-v-10aac690="">BootstrapVue Logo</title> <defs data-v-10aac690=""><filter data-v-10aac690="" id="logo-shadow" filterUnits="objectBoundingBox" x="-50%" y="-50%" width="200%" height="200%"><feOffset data-v-10aac690="" in="SourceAlpha" dx="-10" dy="25" result="ALPHA1"></feOffset> <feMorphology data-v-10aac690="" in="ALPHA1" operator="dilate" radius="15" result="ALPHA"></feMorphology> <feGaussianBlur data-v-10aac690="" in="ALPHA" stdDeviation="20" result="DROP"></feGaussianBlur> <feFlood data-v-10aac690="" in="DROP" flood-color="#333" result="SOLID"></feFlood> <feComposite data-v-10aac690="" in="DROP" in2="SOLID" operator="in" result="SHADOW1"></feComposite> <feComponentTransfer data-v-10aac690="" in="SHADOW1" result="SHADOW"><feFuncA data-v-10aac690="" type="linear" slope="0.55"></feFuncA></feComponentTransfer> <feMerge data-v-10aac690=""><feMergeNode data-v-10aac690="" in="SHADOW"></feMergeNode> <feMergeNode data-v-10aac690="" in="SourceGraphic"></feMergeNode></feMerge></filter></defs> <g data-v-10aac690=""><g data-v-10aac690="" filter="url(#logo-shadow)" class="logo-dark-v"><path data-v-10aac690="" fill="#34495E" d="M747 311L602 562 458 311H227l375 651 376-651z"></path></g> <g data-v-10aac690="" filter="url(#logo-shadow)" class="logo-purple-v"><path data-v-10aac690="" fill="#563D7C" fill-rule="nonzero" d="M219 195h762L599 857z"></path> <path data-v-10aac690="" fill="#ffffff" d="M501 282l132 0c25,0 44,5 59,16 15,12 22,28 22,51 0,14 -3,26 -10,35 -7,10 -16,18 -29,23l0 1c17,3 30,11 38,24 9,12 13,27 13,46 0,11 -2,21 -6,30 -3,9 -9,17 -17,24 -9,6 -19,12 -32,16 -12,4 -28,6 -45,6l-125 0 0 -272 0 0zm48 114l77 0c12,0 21,-4 29,-10 8,-7 11,-16 11,-28 0,-14 -3,-24 -10,-29 -7,-6 -17,-9 -30,-9l-77 0 0 76 0 0zm0 119l84 0c14,0 26,-4 33,-11 8,-8 13,-19 13,-32 0,-14 -4,-24 -13,-31 -8,-8 -19,-11 -33,-11l-84 0 0 85z" class="logo-white-b"></path></g> <g data-v-10aac690="" filter="url(#logo-shadow)" class="logo-green-v"><path data-v-10aac690="" fill="#41B883" d="M839 357L600 771 361 357H202l398 690 398-690z"></path></g></g></svg></aside> <header data-v-792738cd="" class="col-md-8 order-md-1 col-12"><h1 data-v-792738cd="" class="mb-3 text-center text-md-left bd-text-purple-bright">
             Bootstrap<span data-v-792738cd="" class="text-vue-green">Vue</span></h1> <p data-v-792738cd="" class="lead">
             With <span data-v-792738cd="" class="font-weight-bolder">BootstrapVue</span> you can build responsive,
             mobile-first, and ARIA accessible projects on the web using
@@ -17,26 +17,28 @@
               (pronounced <span data-v-792738cd="" class="text-nowrap">/<i data-v-792738cd="">vjuː</i>/</span>, like view)
               is a progressive framework for building user interfaces.
             </div></div></header></div> <p data-v-792738cd="" class="mb-0 text-muted text-center mb-n4 mb-md-n5">
-        Current Version<br data-v-792738cd=""> <a data-v-792738cd="" href="/docs/reference/changelog" class="small" target="_self">v2.21.2</a></p></article></section>
+        Current Version<br data-v-792738cd=""> <a data-v-792738cd="" href="/docs/reference/changelog" class="small" target="_self">v2.21.2</a></p></article>
+    </section-->
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  data () {
+  name: "HelloWorld",
+  data() {
     return {
       title_1: `NodeJS 마이크로서비스`,
-      title_2: `VueJS 게시판`,      
-      msg: ``,      
-    }
+      title_2: `VueJS 게시판`,
+      msg: ``
+    };
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 ul {
