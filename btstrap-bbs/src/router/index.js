@@ -2,14 +2,17 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 ////////////////////////////////////////////////////////
-import Board from '@/components/mariaBoard/Board'
-import ContentDetail from '@/components/mariaBoard/ContentDetail';
-import Create from '@/components/mariaBoard/Create';
+import MariaBoard from '@/components/mariaBoard/Board'
+import MariaContentDetail from '@/components/mariaBoard/ContentDetail';
+import MariaCreate from '@/components/mariaBoard/Create';
 ////////////////////////////////////////////////////////
 import PostgreBoard from '@/components/postgreBoard/Board'
 import PostgreContentDetail from '@/components/postgreBoard/ContentDetail';
 import PostgreCreate from '@/components/postgreBoard/Create';
-
+////////////////////////////////////////////////////////
+import BoardComment from '@/components/mariaBoardComment/Board'
+import BoardCommentContentDetail from '@/components/mariaBoardComment/ContentDetail';
+import BoardCommentCreate from '@/components/mariaBoardComment/Create';
 
 Vue.use(Router)
 
@@ -23,18 +26,18 @@ export default new Router({
     ////////////////////mariadb Board//////////////////
     {
       path: '/board/free',
-      name: 'Board',
-      component: Board
+      name: 'MariaBoard',
+      component: MariaBoard
     },
     {
       path: '/board/free/detail/:contentId',
-      name: 'ContentDetail',
-      component: ContentDetail
+      name: 'MariaContentDetail',
+      component: MariaContentDetail
     },
     {
       path: '/board/free/create/:contentId?',
-      name: 'Create',
-      component: Create
+      name: 'MariaCreate',
+      component: MariaCreate
     },
     ////////////////////postgredb Board/////////////////
     {
@@ -51,6 +54,22 @@ export default new Router({
       path: '/pgboard/free/create/:contentId?',
       name: 'PostgreCreate',
       component: PostgreCreate
+    },
+     ////////////////////postgredb Board/////////////////
+     {
+      path: '/boardComment/free',
+      name: 'BoardComment',
+      component: BoardComment
+    },
+    {
+      path: '/boardComment/free/detail/:contentId',
+      name: 'BoardCommentContentDetail',
+      component: BoardCommentContentDetail
+    },
+    {
+      path: '/boardComment/free/create/:contentId?',
+      name: 'BoardCommentCreate',
+      component: BoardCommentCreate
     },
   ]
 })

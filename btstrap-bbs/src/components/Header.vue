@@ -8,8 +8,9 @@
       <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav>
           <!--b-nav-item href="#">공지사항</b-nav-item-->
-          <b-nav-item to="/board/free">MariaDB Board</b-nav-item>
-          <b-nav-item to="/pgboard/free">PostgreDB Board</b-nav-item>
+          <b-nav-item to="/board/free">MariaDB_Board</b-nav-item>
+          <b-nav-item to="/pgboard/free">PostgreDB_Board</b-nav-item>
+          <b-nav-item to="/boardComment/free">마이크로서비스Comment기능분리</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
