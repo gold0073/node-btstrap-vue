@@ -2,13 +2,13 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 ////////////////////////////////////////////////////////
-import Board from '@/components/Board'
-import ContentDetail from '@/components/ContentDetail';
-import Create from '@/components/Create';
+import Board from '@/components/mariaBoard/Board'
+import ContentDetail from '@/components/mariaBoard/ContentDetail';
+import Create from '@/components/mariaBoard/Create';
 ////////////////////////////////////////////////////////
-import PostgreBoard from '@/components/pgBoard/Board'
-import PostgreContentDetail from '@/components/pgBoard/ContentDetail';
-import PostgreCreate from '@/components/pgBoard/Create';
+import PostgreBoard from '@/components/postgreBoard/Board'
+import PostgreContentDetail from '@/components/postgreBoard/ContentDetail';
+import PostgreCreate from '@/components/postgreBoard/Create';
 
 
 Vue.use(Router)
