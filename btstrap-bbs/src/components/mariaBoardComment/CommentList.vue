@@ -1,9 +1,11 @@
 <template>
-  <div>
+  <div style="border:white !important;">
     <div class='content-detail-list' :key="item.comment_id" v-for="item in comments">
       <CommentListItem :commentObj="item"/>
     </div>
-    <CommentCreate :contentId="contentId" :reloadComments="reloadComments"/>
+      <template v-if="comments !== 'error'">
+      <CommentCreate :contentId="contentId" :reloadComments="reloadComments"/>
+      </template>
   </div>
 </template>
 <script>
@@ -27,6 +29,8 @@ export default {
       }).then( ret =>{
       console.log("results :" , ret);
       this.comments =  ret.data.results;
+    }).catch(err=>{
+      this.comments =  'error';    
     });
   },
   data() {
